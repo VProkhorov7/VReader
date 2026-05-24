@@ -56,7 +56,7 @@ enum AuthError: String, Equatable, Hashable, Codable, Sendable, CaseIterable {
     case credentialsMissing
 }
 
-enum ErrorCode: Equatable, Hashable, Codable, Sendable {
+enum ErrorCode: Error, Equatable, Hashable, Codable, Sendable {
     case fileSystem(FileSystemError)
     case network(NetworkError)
     case cloudProvider(CloudProviderError)

@@ -184,18 +184,18 @@ final class iCloudSettingsStore: ObservableObject {
         return list
     }
 
-    func addAccount(_ account: CloudProviderAccount, password: String) throws {
-        try KeychainManager.shared.save(password, for: account.keychainKey)
+    func addAccount(_ account: CloudProviderAccount, password: String) async throws {
+        try await KeychainManager.shared.save(key: account.keychainKey, value: password)
         connectedAccounts.append(account)
     }
 
-    func removeAccount(_ account: CloudProviderAccount) {
-        _ = try? KeychainManager.shared.delete(key: account.keychainKey)
+    func removeAccount(_ account: CloudProviderAccount) async {
+        _ = try? await KeychainManager.shared.delete(key: account.keychainKey)
         connectedAccounts.removeAll { $0.id == account.id }
     }
 
-    func password(for account: CloudProviderAccount) -> String? {
-        try? KeychainManager.shared.read(key: account.keychainKey)
+    func password(for account: CloudProviderAccount) async -> String? {
+        try? await KeychainManager.shared.load(key: account.keychainKey)
     }
 
     // MARK: Catalogs
@@ -212,20 +212,20 @@ final class iCloudSettingsStore: ObservableObject {
         return list
     }
 
-    func addCatalog(_ entry: OnlineCatalogEntry, password: String = "") throws {
+    func addCatalog(_ entry: OnlineCatalogEntry, password: String = "") async throws {
         if !password.isEmpty {
-            try KeychainManager.shared.save(password, for: entry.keychainKey)
+            try await KeychainManager.shared.save(key: entry.keychainKey, value: password)
         }
         connectedCatalogs.append(entry)
     }
 
-    func removeCatalog(_ entry: OnlineCatalogEntry) {
-        _ = try? KeychainManager.shared.delete(key: entry.keychainKey)
+    func removeCatalog(_ entry: OnlineCatalogEntry) async {
+        _ = try? await KeychainManager.shared.delete(key: entry.keychainKey)
         connectedCatalogs.removeAll { $0.id == entry.id }
     }
 
-    func catalogPassword(for entry: OnlineCatalogEntry) -> String? {
-        try? KeychainManager.shared.read(key: entry.keychainKey)
+    func catalogPassword(for entry: OnlineCatalogEntry) async -> String? {
+        try? await KeychainManager.shared.load(key: entry.keychainKey)
     }
 
     func isCatalogConnected(_ catalogID: String) -> Bool {

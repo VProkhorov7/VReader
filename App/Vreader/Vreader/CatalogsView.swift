@@ -114,7 +114,7 @@ struct OnlineCatalogsSection: View {
                         view.swipeActions {
                             Button(role: .destructive) {
                                 if let entry = store.connectedCatalogs.first(where: { $0.catalogID == config.id }) {
-                                    store.removeCatalog(entry)
+                                    Task { await store.removeCatalog(entry) }
                                 }
                             } label: {
                                 Label(L10n.Catalogs.disconnect, systemImage: "minus.circle")
@@ -146,7 +146,7 @@ struct OnlineCatalogsSection: View {
                         }
                         .swipeActions {
                             Button(role: .destructive) {
-                                store.removeCatalog(entry)
+                                Task { await store.removeCatalog(entry) }
                             } label: {
                                 Label(L10n.Common.delete, systemImage: "trash")
                             }
@@ -222,7 +222,7 @@ struct CloudStorageSection: View {
                     )
                     .swipeActions {
                         Button(role: .destructive) {
-                            store.removeAccount(account)
+                            Task { await store.removeAccount(account) }
                         } label: {
                             Label(L10n.Common.delete, systemImage: "trash")
                         }
@@ -299,7 +299,7 @@ struct ConnectBuiltInCatalogSheet: View {
                     if isConnected {
                         Button(role: .destructive) {
                             if let entry = store.connectedCatalogs.first(where: { $0.catalogID == config.id }) {
-                                store.removeCatalog(entry)
+                                Task { await store.removeCatalog(entry) }
                             }
                             dismiss()
                         } label: {
@@ -321,8 +321,10 @@ struct ConnectBuiltInCatalogSheet: View {
                                 url: config.url,
                                 login: ""
                             )
-                            try? store.addCatalog(entry)
-                            dismiss()
+                            Task {
+                                try? await store.addCatalog(entry)
+                                dismiss()
+                            }
                         } label: {
                             Text(L10n.Catalogs.connect)
                                 .font(.headline)
@@ -444,11 +446,13 @@ struct AddOPDSCatalogSheet: View {
             url: url,
             login: login
         )
-        do {
-            try store.addCatalog(entry, password: password)
-            dismiss()
-        } catch {
-            saveError = error.localizedDescription
+        Task {
+            do {
+                try await store.addCatalog(entry, password: password)
+                dismiss()
+            } catch {
+                saveError = error.localizedDescription
+            }
         }
     }
 
@@ -589,11 +593,13 @@ struct AddCloudAccountSheet: View {
             username: login,
             isPremium: false
         )
-        do {
-            try store.addAccount(account, password: password)
-            dismiss()
-        } catch {
-            saveError = error.localizedDescription
+        Task {
+            do {
+                try await store.addAccount(account, password: password)
+                dismiss()
+            } catch {
+                saveError = error.localizedDescription
+            }
         }
     }
 
