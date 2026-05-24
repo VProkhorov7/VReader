@@ -8,3 +8,16 @@ build/
 .skaro/secrets.yaml
 .claude/settings.local.json
 .env
+.rtk/
+
+# ── Skaro (auto-generated, do not remove this marker) ──
+# This section is managed by `skaro init`. Do NOT delete it.
+# You may add your own rules below the closing marker.
+#
+# Secrets — API keys, never commit!
+.skaro/secrets.yaml
+
+# Usage tracking — local stats, not project artifacts
+.skaro/token_usage.yaml
+.skaro/usage_log.jsonl
+# ── /Skaro ─────────────────────────────────────────────
