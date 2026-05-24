@@ -83,7 +83,7 @@ final = load_final()
 # --- 1. Дубликаты типов ---
 definitions = {}
 for fname, (src, content) in final.items():
-    for m in re.finditer(r'\b(?:struct|final class|class|enum|protocol|actor)\s+([A-Z]\w+)', content):
+    for m in re.finditer(r'\b(?:struct|final class|class|enum|protocol|actor|typealias)\s+([A-Z]\w+)', content):
         definitions.setdefault(m.group(1), []).append((fname, src))
 
 dups = {k: v for k, v in definitions.items()
@@ -101,7 +101,7 @@ type_issues = []
 for fname, (src, content) in sorted(final.items()):
     if src != 'output': continue  # проверяем только наши outputs
     clean = strip_noise(content)
-    local = {m.group(1) for m in re.finditer(r'\b(?:struct|class|enum|protocol|actor)\s+([A-Z]\w+)', content)}
+    local = {m.group(1) for m in re.finditer(r'\b(?:struct|class|enum|protocol|actor|typealias)\s+([A-Z]\w+)', content)}
     refs = set()
     for pat in [r':\s*([A-Z]\w+)', r'->\s*([A-Z]\w+)', r'\b([A-Z]\w+)\s*\(', r'[<\[]\s*([A-Z]\w+)']:
         for m in re.finditer(pat, clean):
