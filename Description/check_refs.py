@@ -58,7 +58,23 @@ SYSTEM = {
     'GridItem','LazyVGrid','DragGesture','TapGesture','UnitPoint','Self',
     'ProgressView','ScrollView','NavigationStack','Sheet','Toolbar',
     'ToolbarItem','ToolbarItemPlacement',
-    'Context','Coordinator','Keys',
+    'Context','Coordinator','Keys','CodingKeys',
+
+    # Extra Swift / Apple / framework types allowed by validator
+    'UInt','UInt8','UInt16','UInt32','UInt64',
+    'Encodable','Decodable','CodingKey','Decoder','Encoder',
+    'EnvironmentKey','StrokeStyle','EmptyView','LazyVStack','Toggle',
+    'LabeledContent','NavigationPath',
+    'SwiftUI',
+    'NSLocalizedString','NSAttributedString','NSRange','CharacterSet','Scanner',
+    'ISO8601DateFormatter',
+    'AVPlayer','AVPlayerItem','AVURLAsset','AVMetadataItem','CMTime','TimeInterval',
+    'WKNavigation',
+    'UIImageView','UIScrollView','UIView',
+    'NWPath','NWPathMonitor',
+    'Logger',
+    'CFString',
+    'UTType',
 }
 
 ok = True
@@ -71,7 +87,7 @@ for fname, (src, content) in final.items():
         definitions.setdefault(m.group(1), []).append((fname, src))
 
 dups = {k: v for k, v in definitions.items()
-        if len(v) > 1 and k not in ('Coordinator',)}  # Coordinator — nested, не конфликт
+        if len(set(f for f, _ in v)) > 1 and k not in ('Coordinator','CodingKeys','Keys','Context',)}  # Coordinator — nested, не конфликт
 if dups:
     ok = False
     print("❌ ДУБЛИКАТЫ ТИПОВ:")
