@@ -1,0 +1,17 @@
+- command: xcodebuild build -project App/Vreader/Vreader.xcodeproj -scheme Vreader
+    -destination "platform=iOS Simulator,name=iPhone 16" -quiet 2>&1 | tail -10
+  name: Сборка проекта (iOS Simulator)
+- command: python3 check_refs.py
+  name: Проверка check_refs.py
+- command: xcodebuild test -project App/Vreader/Vreader.xcodeproj -scheme Vreader
+    -destination "platform=iOS Simulator,name=iPhone 16" -only-testing:VreaderUITests/VreaderUITests/testNetworkMonitorInitialized
+    -quiet 2>&1 | tail -20
+  name: Запуск UI-тестов (интеграция NetworkMonitor)
+- command: xcodebuild test -project App/Vreader/Vreader.xcodeproj -scheme Vreader
+    -destination "platform=iOS Simulator,name=iPhone 16" -only-testing:VreaderUITests/VreaderUITestsLaunchTests/testLaunch
+    -quiet 2>&1 | tail -20
+  name: Запуск Launch-теста (скриншот при старте)
+- command: grep -rn "coverData:" App/Vreader/Vreader/ --include="*.swift" | grep -v
+    "//"; grep -rn "isPremium" App/Vreader/Vreader/ --include="*.swift" | grep -v
+    "//" | grep -i "cloudkit\|ckrecord" || echo "OK"
+  name: Поиск запрещённых паттернов (coverData, isPremium в CloudKit)

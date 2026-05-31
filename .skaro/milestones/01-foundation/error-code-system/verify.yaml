@@ -1,0 +1,27 @@
+- command: xcodebuild build -project App/Vreader/Vreader.xcodeproj -scheme Vreader
+    -destination "platform=iOS Simulator,name=iPhone 16" CODE_SIGNING_ALLOWED=NO SWIFT_TREAT_WARNINGS_AS_ERRORS=YES
+    2>&1 | grep -E "(BUILD SUCCEEDED|BUILD FAILED|error:)" | head -20
+  name: Сборка проекта (iOS Simulator)
+- command: python3 check_refs.py
+  name: Проверка check_refs.py
+- command: grep -c "underlyingDescription" App/Vreader/Vreader/AppError.swift
+  name: Поле underlyingDescription присутствует в AppError (FR-10, FR-17)
+- command: grep -c "underlyingError" App/Vreader/Vreader/AppError.swift | xargs -I{}
+    sh -c 'grep "CodingKeys" App/Vreader/Vreader/AppError.swift | grep -c "underlyingError"
+    || echo 0'
+  name: Поле underlyingError исключено из CodingKeys в AppError (FR-09)
+- command: grep -c "enum Errors" App/Vreader/Vreader/L10n.swift
+  name: L10n.Errors namespace добавлен (FR-12)
+- command: grep -c "\"error\." App/Vreader/Vreader/en.lproj/Localizable.strings
+  name: Ключи error.* присутствуют в en Localizable.strings
+- command: diff <(grep "\"error\." App/Vreader/Vreader/en.lproj/Localizable.strings
+    | sed 's/ =.*//' | sort) <(grep "\"error\." App/Vreader/Vreader/ru.lproj/Localizable.strings
+    | sed 's/ =.*//' | sort)
+  name: Ключи error.* присутствуют в ru Localizable.strings и совпадают по количеству
+- command: awk '/static func fileNotFound|static func networkUnavailable|static func
+    premiumRequired|static func timeout/,/^    \}/' App/Vreader/Vreader/AppError.swift
+    | grep -E 'description:|recoveryHint:' | grep -v "L10n\." | wc -l
+  name: Отсутствие хардкода строк в фабричных методах AppError (NFR-03)
+- command: grep -A5 "var analyticsCode" App/Vreader/Vreader/AppError.swift | grep
+    -v "//" | grep -E '\(|\)|path|token|url' | wc -l
+  name: analyticsCode не содержит скобок и динамических данных (NFR-05)

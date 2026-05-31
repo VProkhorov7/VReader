@@ -1,0 +1,19 @@
+- command: grep -rn "\.save(key:" App/Vreader/Vreader/ --include="*.swift" | grep
+    -v KeychainManager.swift || echo "OK"
+  name: Поиск оставшихся вызовов старого API
+- command: grep -rn "km\.load\|shared\.load" App/Vreader/Vreader/ --include="*.swift"
+    | grep -v KeychainManager.swift || echo "OK"
+  name: Поиск вызовов .load( с возможной неоднозначностью
+- command: python3 check_refs.py 2>&1 | tail -30
+  name: check_refs.py валидация
+- command: cd App/Vreader && xcodebuild -scheme Vreader -destination 'platform=iOS
+    Simulator,OS=latest,name=iPhone 16' build -quiet 2>&1 | tail -10
+  name: Сборка проекта (iOS Simulator)
+- command: cd App/Vreader && xcodebuild test -scheme Vreader -destination 'platform=iOS
+    Simulator,OS=latest,name=iPhone 16' -only-testing:VreaderTests/KeychainManagerTests
+    2>&1 | grep -E "Test Suite|passed|failed|error:"
+  name: Юнит-тесты KeychainManagerTests
+- command: cd App/Vreader && xcodebuild test -scheme Vreader -destination 'platform=iOS
+    Simulator,OS=latest,name=iPhone 16' -only-testing:VreaderTests 2>&1 | grep -E
+    "Test Suite|passed|failed|error:"
+  name: Все юнит-тесты VreaderTests

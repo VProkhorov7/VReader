@@ -19,8 +19,8 @@ final class ICloudProvider: CloudProviderProtocol {
         guard containerURL != nil else {
             throw AppError(
                 code: .auth(.credentialsMissing),
-                description: "iCloud container is unavailable.",
-                recoveryHint: "Sign in to iCloud in System Settings and try again."
+                description: L10n.Errors.Auth.credentialsMissingDescription,
+                recoveryHint: L10n.Errors.Auth.credentialsMissingRecovery
             )
         }
         isAuthenticated = true
@@ -34,8 +34,8 @@ final class ICloudProvider: CloudProviderProtocol {
         guard let base = containerURL else {
             throw AppError(
                 code: .auth(.credentialsMissing),
-                description: "iCloud container is unavailable.",
-                recoveryHint: "Sign in to iCloud in System Settings and try again."
+                description: L10n.Errors.Auth.credentialsMissingDescription,
+                recoveryHint: L10n.Errors.Auth.credentialsMissingRecovery
             )
         }
         let dir = base.appendingPathComponent(path)
@@ -59,8 +59,8 @@ final class ICloudProvider: CloudProviderProtocol {
         guard let base = containerURL else {
             throw AppError(
                 code: .auth(.credentialsMissing),
-                description: "iCloud container is unavailable.",
-                recoveryHint: "Sign in to iCloud in System Settings and try again."
+                description: L10n.Errors.Auth.credentialsMissingDescription,
+                recoveryHint: L10n.Errors.Auth.credentialsMissingRecovery
             )
         }
 
@@ -86,8 +86,8 @@ final class ICloudProvider: CloudProviderProtocol {
         guard let base = containerURL else {
             throw AppError(
                 code: .auth(.credentialsMissing),
-                description: "iCloud container is unavailable.",
-                recoveryHint: "Sign in to iCloud in System Settings and try again."
+                description: L10n.Errors.Auth.credentialsMissingDescription,
+                recoveryHint: L10n.Errors.Auth.credentialsMissingRecovery
             )
         }
 
@@ -122,8 +122,8 @@ final class ICloudProvider: CloudProviderProtocol {
         guard let base = containerURL else {
             throw AppError(
                 code: .auth(.credentialsMissing),
-                description: "iCloud container is unavailable.",
-                recoveryHint: "Sign in to iCloud in System Settings and try again."
+                description: L10n.Errors.Auth.credentialsMissingDescription,
+                recoveryHint: L10n.Errors.Auth.credentialsMissingRecovery
             )
         }
 
@@ -132,8 +132,8 @@ final class ICloudProvider: CloudProviderProtocol {
         guard FileManager.default.fileExists(atPath: fileURL.path) else {
             throw AppError(
                 code: .fileSystem(.fileNotFound),
-                description: "The file '\(file.name)' was not found in iCloud.",
-                recoveryHint: "The file may have been deleted from iCloud. Refresh your library."
+                description: L10n.Errors.FileSystem.fileNotFoundDescription,
+                recoveryHint: L10n.Errors.FileSystem.fileNotFoundRecovery
             )
         }
 
@@ -144,8 +144,8 @@ final class ICloudProvider: CloudProviderProtocol {
         guard let base = containerURL else {
             throw AppError(
                 code: .auth(.credentialsMissing),
-                description: "iCloud container is unavailable.",
-                recoveryHint: "Sign in to iCloud in System Settings and try again."
+                description: L10n.Errors.Auth.credentialsMissingDescription,
+                recoveryHint: L10n.Errors.Auth.credentialsMissingRecovery
             )
         }
 
@@ -210,8 +210,8 @@ final class ICloudProvider: CloudProviderProtocol {
                 if !exists {
                     throw AppError(
                         code: .fileSystem(.fileNotFound),
-                        description: "The iCloud file does not exist at the expected location.",
-                        recoveryHint: "Check your iCloud connection and try again."
+                        description: L10n.Errors.FileSystem.fileNotFoundDescription,
+                        recoveryHint: L10n.Errors.FileSystem.fileNotFoundRecovery
                     )
                 }
             }
@@ -221,8 +221,8 @@ final class ICloudProvider: CloudProviderProtocol {
 
         throw AppError(
             code: .network(.timeout),
-            description: "iCloud download timed out.",
-            recoveryHint: "Check your internet connection and try again."
+            description: L10n.Errors.Network.timeoutDescription,
+            recoveryHint: L10n.Errors.Network.timeoutRecovery
         )
     }
 }

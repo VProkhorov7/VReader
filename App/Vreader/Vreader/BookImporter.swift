@@ -48,8 +48,8 @@ final class BookImporter {
         guard let format = BookFormat(url: sourceURL) else {
             throw AppError(
                 code: .parsing(.unsupportedFormat),
-                description: "The file format '\(sourceURL.pathExtension)' is not supported.",
-                recoveryHint: "Supported formats: EPUB, FB2, PDF, DjVu, CBZ, CBR, TXT, RTF, MP3, M4B."
+                description: L10n.Errors.Parsing.unsupportedFormatDescription,
+                recoveryHint: L10n.Errors.Parsing.unsupportedFormatRecovery
             )
         }
 
@@ -60,10 +60,11 @@ final class BookImporter {
             try FileManager.default.copyItem(at: sourceURL, to: destURL)
         } catch {
             throw AppError(
-                code: .fileSystem(.permissionDenied),
-                description: "Failed to copy the file to the library.",
-                recoveryHint: "Check available storage space and file permissions.",
-                underlyingError: error as? (any Error & Sendable)
+                code: .fileSystem(.copyFailed),
+                description: L10n.Errors.FileSystem.copyFailedDescription,
+                recoveryHint: L10n.Errors.FileSystem.copyFailedRecovery,
+                underlyingError: error as? (any Error & Sendable),
+                underlyingDescription: error.localizedDescription
             )
         }
 

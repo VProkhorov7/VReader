@@ -1,0 +1,14 @@
+[
+  "App/Vreader/Vreader/NetworkMonitor.swift",
+  "App/Vreader/Vreader/VreaderApp.swift",
+  "App/Vreader/Vreader/AppState.swift",
+  "App/Vreader/Vreader/AppError.swift",
+  "App/Vreader/Vreader/ErrorCode.swift",
+  "App/Vreader/Vreader/ThemeStore.swift",
+  "App/Vreader/Vreader/L10n.swift",
+  "App/Vreader/Vreader/CloudProviderProtocol.swift",
+  "App/Vreader/Vreader/WebDAVProvider.swift",
+  "App/Vreader/Vreader/DiagnosticsService.swift",
+  "App/Vreader/VreaderUITests/VreaderUITests.swift",
+  "App/Vreader/VreaderUITests/VreaderUITestsLaunchTests.swift"
+]

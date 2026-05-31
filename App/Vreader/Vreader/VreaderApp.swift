@@ -40,6 +40,7 @@ struct VReaderApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.appTheme, themeStore.currentTheme)
+                .environment(\.networkMonitor, NetworkMonitor.shared)
         }
         .modelContainer(container)
     }

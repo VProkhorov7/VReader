@@ -1,0 +1,10 @@
+- command: xcodebuild build -project App/Vreader/Vreader.xcodeproj -scheme Vreader
+    -destination 'generic/platform=iOS' CODE_SIGNING_ALLOWED=NO 2>&1 | grep -E '(BUILD
+    SUCCEEDED|BUILD FAILED|error:)' | head -20
+  name: Сборка проекта (iOS, без подписи)
+- command: xcodebuild test -project App/Vreader/Vreader.xcodeproj -scheme Vreader
+    -destination 'platform=iOS Simulator,name=iPhone 16' -only-testing:VreaderTests
+    2>&1 | grep -E '(Test Suite|passed|failed|error:)' | head -30
+  name: Юнит-тесты VreaderTests
+- command: python3 check_refs.py 2>&1 | grep -E '(ERROR|WARNING|OK)' | head -20
+  name: Проверка отсутствия isPremium в CloudKit (check_refs)

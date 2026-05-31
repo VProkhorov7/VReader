@@ -1,0 +1,13 @@
+[
+  "App/Vreader/Vreader/KeychainManager.swift",
+  "App/Vreader/Vreader/AppError.swift",
+  "App/Vreader/Vreader/ErrorCode.swift",
+  "App/Vreader/Vreader/L10n.swift",
+  "App/Vreader/Vreader/DiagnosticsService.swift",
+  "App/Vreader/Vreader/iCloudSettingsStore.swift",
+  "App/Vreader/Vreader/VreaderApp.swift",
+  "App/Vreader/VreaderTests/VreaderTests.swift",
+  "CLAUDE.md",
+  "App/Vreader/Vreader/WebDAVProvider.swift",
+  "App/Vreader/Vreader/CloudProviderManager.swift"
+]

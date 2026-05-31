@@ -1,0 +1,66 @@
+{
+  "checklist": [
+    {
+      "id": "test_files_exist",
+      "label": "Test files present",
+      "passed": false,
+      "detail": "No test files found"
+    },
+    {
+      "id": "spec_exists",
+      "label": "Specification filled",
+      "passed": true,
+      "detail": "6929 chars"
+    },
+    {
+      "id": "stages_complete",
+      "label": "All stages implemented",
+      "passed": true,
+      "detail": "1/1 stages"
+    }
+  ],
+  "task_commands": [
+    {
+      "name": "Сборка проекта (iOS Simulator)",
+      "command": "xcodebuild build -project App/Vreader/Vreader.xcodeproj -scheme Vreader -destination \"platform=iOS Simulator,name=iPhone 16\" -quiet 2>&1 | tail -10",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "xcode-select: error: tool 'xcodebuild' requires Xcode, but active developer directory '/Library/Developer/CommandLineTools' is a command line tools instance\n",
+      "stderr": ""
+    },
+    {
+      "name": "Проверка check_refs.py",
+      "command": "python3 check_refs.py",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "✅ Все API совместимы с iOS 17+\n✅ Проект чист — можно публиковать\n",
+      "stderr": ""
+    },
+    {
+      "name": "Запуск UI-тестов (интеграция NetworkMonitor)",
+      "command": "xcodebuild test -project App/Vreader/Vreader.xcodeproj -scheme Vreader -destination \"platform=iOS Simulator,name=iPhone 16\" -only-testing:VreaderUITests/VreaderUITests/testNetworkMonitorInitialized -quiet 2>&1 | tail -20",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "xcode-select: error: tool 'xcodebuild' requires Xcode, but active developer directory '/Library/Developer/CommandLineTools' is a command line tools instance\n",
+      "stderr": ""
+    },
+    {
+      "name": "Запуск Launch-теста (скриншот при старте)",
+      "command": "xcodebuild test -project App/Vreader/Vreader.xcodeproj -scheme Vreader -destination \"platform=iOS Simulator,name=iPhone 16\" -only-testing:VreaderUITests/VreaderUITestsLaunchTests/testLaunch -quiet 2>&1 | tail -20",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "xcode-select: error: tool 'xcodebuild' requires Xcode, but active developer directory '/Library/Developer/CommandLineTools' is a command line tools instance\n",
+      "stderr": ""
+    },
+    {
+      "name": "Поиск запрещённых паттернов (coverData, isPremium в CloudKit)",
+      "command": "grep -rn \"coverData:\" App/Vreader/Vreader/ --include=\"*.swift\" | grep -v \"//\"; grep -rn \"isPremium\" App/Vreader/Vreader/ --include=\"*.swift\" | grep -v \"//\" | grep -i \"cloudkit\\|ckrecord\" || echo \"OK\"",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "OK\n",
+      "stderr": ""
+    }
+  ],
+  "passed": false,
+  "timestamp": "2026-05-29T23:55:03.784854"
+}

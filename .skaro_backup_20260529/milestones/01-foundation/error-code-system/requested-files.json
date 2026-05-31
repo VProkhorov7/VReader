@@ -1,0 +1,14 @@
+[
+  "App/Vreader/Vreader/AppError.swift",
+  "App/Vreader/Vreader/ErrorCode.swift",
+  "App/Vreader/Vreader/L10n.swift",
+  "App/Vreader/Vreader/BookImporter.swift",
+  "App/Vreader/Vreader/CloudProviderProtocol.swift",
+  "App/Vreader/Vreader/WebDAVProvider.swift",
+  "App/Vreader/Vreader/iCloudProvider.swift",
+  "App/Vreader/Vreader/DiagnosticsService.swift",
+  "App/Vreader/Vreader/KeychainManager.swift",
+  "App/Vreader/Vreader/ThemeStore.swift",
+  "App/Vreader/Vreader/en.lproj/Localizable.strings",
+  "App/Vreader/Vreader/ru.lproj/Localizable.strings"
+]

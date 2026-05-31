@@ -185,17 +185,17 @@ final class iCloudSettingsStore: ObservableObject {
     }
 
     func addAccount(_ account: CloudProviderAccount, password: String) async throws {
-        try await KeychainManager.shared.save(key: account.keychainKey, value: password)
+        try await KeychainManager.shared.saveString(key: account.keychainKey, value: password)
         connectedAccounts.append(account)
     }
 
     func removeAccount(_ account: CloudProviderAccount) async {
-        _ = try? await KeychainManager.shared.delete(key: account.keychainKey)
+        _ = try? await KeychainManager.shared.deleteString(key: account.keychainKey)
         connectedAccounts.removeAll { $0.id == account.id }
     }
 
     func password(for account: CloudProviderAccount) async -> String? {
-        try? await KeychainManager.shared.load(key: account.keychainKey)
+        try? await KeychainManager.shared.loadString(key: account.keychainKey)
     }
 
     // MARK: Catalogs
@@ -214,18 +214,18 @@ final class iCloudSettingsStore: ObservableObject {
 
     func addCatalog(_ entry: OnlineCatalogEntry, password: String = "") async throws {
         if !password.isEmpty {
-            try await KeychainManager.shared.save(key: entry.keychainKey, value: password)
+            try await KeychainManager.shared.saveString(key: entry.keychainKey, value: password)
         }
         connectedCatalogs.append(entry)
     }
 
     func removeCatalog(_ entry: OnlineCatalogEntry) async {
-        _ = try? await KeychainManager.shared.delete(key: entry.keychainKey)
+        _ = try? await KeychainManager.shared.deleteString(key: entry.keychainKey)
         connectedCatalogs.removeAll { $0.id == entry.id }
     }
 
     func catalogPassword(for entry: OnlineCatalogEntry) async -> String? {
-        try? await KeychainManager.shared.load(key: entry.keychainKey)
+        try? await KeychainManager.shared.loadString(key: entry.keychainKey)
     }
 
     func isCatalogConnected(_ catalogID: String) -> Bool {

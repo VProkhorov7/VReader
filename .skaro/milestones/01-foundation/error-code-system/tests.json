@@ -1,0 +1,98 @@
+{
+  "checklist": [
+    {
+      "id": "test_files_exist",
+      "label": "Test files present",
+      "passed": false,
+      "detail": "No test files found"
+    },
+    {
+      "id": "spec_exists",
+      "label": "Specification filled",
+      "passed": true,
+      "detail": "9735 chars"
+    },
+    {
+      "id": "stages_complete",
+      "label": "All stages implemented",
+      "passed": true,
+      "detail": "2/2 stages"
+    }
+  ],
+  "task_commands": [
+    {
+      "name": "Сборка проекта (iOS Simulator)",
+      "command": "xcodebuild build -project App/Vreader/Vreader.xcodeproj -scheme Vreader -destination \"platform=iOS Simulator,name=iPhone 16\" CODE_SIGNING_ALLOWED=NO SWIFT_TREAT_WARNINGS_AS_ERRORS=YES 2>&1 | grep -E \"(BUILD SUCCEEDED|BUILD FAILED|error:)\" | head -20",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "xcode-select: error: tool 'xcodebuild' requires Xcode, but active developer directory '/Library/Developer/CommandLineTools' is a command line tools instance\n",
+      "stderr": ""
+    },
+    {
+      "name": "Проверка check_refs.py",
+      "command": "python3 check_refs.py",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "✅ Все API совместимы с iOS 17+\n✅ Проект чист — можно публиковать\n",
+      "stderr": ""
+    },
+    {
+      "name": "Поле underlyingDescription присутствует в AppError (FR-10, FR-17)",
+      "command": "grep -c \"underlyingDescription\" App/Vreader/Vreader/AppError.swift",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "7\n",
+      "stderr": ""
+    },
+    {
+      "name": "Поле underlyingError исключено из CodingKeys в AppError (FR-09)",
+      "command": "grep -c \"underlyingError\" App/Vreader/Vreader/AppError.swift | xargs -I{} sh -c 'grep \"CodingKeys\" App/Vreader/Vreader/AppError.swift | grep -c \"underlyingError\" || echo 0'",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "0\n0\n",
+      "stderr": ""
+    },
+    {
+      "name": "L10n.Errors namespace добавлен (FR-12)",
+      "command": "grep -c \"enum Errors\" App/Vreader/Vreader/L10n.swift",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "1\n",
+      "stderr": ""
+    },
+    {
+      "name": "Ключи error.* присутствуют в en Localizable.strings",
+      "command": "grep -c \"\\\"error\\.\" App/Vreader/Vreader/en.lproj/Localizable.strings",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "172\n",
+      "stderr": ""
+    },
+    {
+      "name": "Ключи error.* присутствуют в ru Localizable.strings и совпадают по количеству",
+      "command": "diff <(grep \"\\\"error\\.\" App/Vreader/Vreader/en.lproj/Localizable.strings | sed 's/ =.*//' | sort) <(grep \"\\\"error\\.\" App/Vreader/Vreader/ru.lproj/Localizable.strings | sed 's/ =.*//' | sort)",
+      "success": false,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "/bin/sh: -c: line 0: syntax error near unexpected token `('\n/bin/sh: -c: line 0: `diff <(grep \"\\\"error\\.\" App/Vreader/Vreader/en.lproj/Localizable.strings | sed 's/ =.*//' | sort) <(grep \"\\\"error\\.\" App/Vreader/Vreader/ru.lproj/Localizable.strings | sed 's/ =.*//' | sort)'\n"
+    },
+    {
+      "name": "Отсутствие хардкода строк в фабричных методах AppError (NFR-03)",
+      "command": "awk '/static func fileNotFound|static func networkUnavailable|static func premiumRequired|static func timeout/,/^    \\}/' App/Vreader/Vreader/AppError.swift | grep -E 'description:|recoveryHint:' | grep -v \"L10n\\.\" | wc -l",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "       0\n",
+      "stderr": ""
+    },
+    {
+      "name": "analyticsCode не содержит скобок и динамических данных (NFR-05)",
+      "command": "grep -A5 \"var analyticsCode\" App/Vreader/Vreader/AppError.swift | grep -v \"//\" | grep -E '\\(|\\)|path|token|url' | wc -l",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "       2\n",
+      "stderr": ""
+    }
+  ],
+  "passed": false,
+  "timestamp": "2026-05-27T20:53:26.464149"
+}

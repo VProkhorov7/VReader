@@ -83,3 +83,191 @@
 
 // AppTheme
 "app_theme.premium_required" = "Эта тема доступна только в Premium-версии";
+
+// Errors — FileSystem
+"error.file_system.file_not_found.description"          = "Файл не найден";
+"error.file_system.file_not_found.recovery"             = "Проверьте, существует ли файл, и повторите попытку";
+"error.file_system.file_access_denied.description"      = "Доступ запрещён";
+"error.file_system.file_access_denied.recovery"         = "Предоставьте приложению доступ к файлу";
+"error.file_system.read_failed.description"             = "Ошибка чтения файла";
+"error.file_system.read_failed.recovery"                = "Файл может быть повреждён или недоступен";
+"error.file_system.write_failed.description"            = "Ошибка записи файла";
+"error.file_system.write_failed.recovery"               = "Проверьте свободное место на устройстве";
+"error.file_system.delete_failed.description"           = "Ошибка удаления файла";
+"error.file_system.delete_failed.recovery"              = "Попробуйте ещё раз или перезапустите приложение";
+"error.file_system.copy_failed.description"             = "Ошибка копирования файла";
+"error.file_system.copy_failed.recovery"                = "Проверьте свободное место на устройстве";
+"error.file_system.move_failed.description"             = "Ошибка перемещения файла";
+"error.file_system.move_failed.recovery"                = "Проверьте свободное место на устройстве";
+"error.file_system.create_directory_failed.description" = "Ошибка создания папки";
+"error.file_system.create_directory_failed.recovery"    = "Проверьте права доступа и свободное место";
+"error.file_system.invalid_path.description"            = "Неверный путь к файлу";
+"error.file_system.invalid_path.recovery"               = "Проверьте путь к файлу и повторите попытку";
+"error.file_system.disk_full.description"               = "Недостаточно места на устройстве";
+"error.file_system.disk_full.recovery"                  = "Освободите место и повторите попытку";
+"error.file_system.permission_denied.description"       = "Нет прав доступа";
+"error.file_system.permission_denied.recovery"          = "Предоставьте приложению необходимые разрешения";
+"error.file_system.file_already_exists.description"     = "Файл уже существует";
+"error.file_system.file_already_exists.recovery"        = "Переименуйте файл или удалите существующий";
+"error.file_system.bookmark_stale.description"          = "Закладка файла устарела";
+"error.file_system.bookmark_stale.recovery"             = "Откройте файл заново для обновления доступа";
+
+// Errors — Network
+"error.network.offline.description"             = "Нет подключения к интернету";
+"error.network.offline.recovery"                = "Проверьте соединение и повторите попытку";
+"error.network.unavailable.description"         = "Сеть недоступна";
+"error.network.unavailable.recovery"            = "Проверьте соединение и повторите попытку";
+"error.network.timeout.description"             = "Время ожидания истекло";
+"error.network.timeout.recovery"                = "Проверьте соединение и повторите попытку";
+"error.network.request_failed.description"      = "Ошибка запроса";
+"error.network.request_failed.recovery"         = "Проверьте соединение и повторите попытку";
+"error.network.invalid_response.description"    = "Неверный ответ сервера";
+"error.network.invalid_response.recovery"       = "Попробуйте позже";
+"error.network.invalid_status_code.description" = "Сервер вернул ошибку";
+"error.network.invalid_status_code.recovery"    = "Попробуйте позже";
+"error.network.decoding_failed.description"     = "Ошибка декодирования ответа";
+"error.network.decoding_failed.recovery"        = "Попробуйте позже";
+"error.network.encoding_failed.description"     = "Ошибка кодирования запроса";
+"error.network.encoding_failed.recovery"        = "Попробуйте позже";
+"error.network.download_failed.description"     = "Ошибка загрузки";
+"error.network.download_failed.recovery"        = "Проверьте соединение и повторите попытку";
+"error.network.upload_failed.description"       = "Ошибка отправки";
+"error.network.upload_failed.recovery"          = "Проверьте соединение и повторите попытку";
+"error.network.server_error.description"        = "Ошибка сервера";
+"error.network.server_error.recovery"           = "Попробуйте позже";
+"error.network.rate_limited.description"        = "Слишком много запросов";
+"error.network.rate_limited.recovery"           = "Подождите немного и повторите попытку";
+"error.network.cancelled.description"           = "Запрос отменён";
+"error.network.cancelled.recovery"              = "Попробуйте ещё раз";
+
+// Errors — CloudProvider
+"error.cloud_provider.authentication_failed.description"  = "Ошибка аутентификации в облаке";
+"error.cloud_provider.authentication_failed.recovery"     = "Войдите в облачный аккаунт заново";
+"error.cloud_provider.authorization_failed.description"   = "Ошибка авторизации в облаке";
+"error.cloud_provider.authorization_failed.recovery"      = "Предоставьте приложению доступ к облачному хранилищу";
+"error.cloud_provider.credentials_missing.description"    = "Данные для входа в облако отсутствуют";
+"error.cloud_provider.credentials_missing.recovery"       = "Войдите в облачный аккаунт";
+"error.cloud_provider.account_not_found.description"      = "Облачный аккаунт не найден";
+"error.cloud_provider.account_not_found.recovery"         = "Проверьте настройки аккаунта";
+"error.cloud_provider.provider_unavailable.description"   = "Облачный сервис недоступен";
+"error.cloud_provider.provider_unavailable.recovery"      = "Попробуйте позже";
+"error.cloud_provider.resource_not_found.description"     = "Файл не найден в облаке";
+"error.cloud_provider.resource_not_found.recovery"        = "Файл мог быть перемещён или удалён";
+"error.cloud_provider.upload_failed.description"          = "Ошибка загрузки в облако";
+"error.cloud_provider.upload_failed.recovery"             = "Проверьте соединение и повторите попытку";
+"error.cloud_provider.download_failed.description"        = "Ошибка скачивания из облака";
+"error.cloud_provider.download_failed.recovery"           = "Проверьте соединение и повторите попытку";
+"error.cloud_provider.sync_failed.description"            = "Ошибка синхронизации с облаком";
+"error.cloud_provider.sync_failed.recovery"               = "Проверьте соединение и повторите попытку";
+"error.cloud_provider.quota_exceeded.description"         = "Квота облачного хранилища исчерпана";
+"error.cloud_provider.quota_exceeded.recovery"            = "Освободите место в облачном хранилище";
+"error.cloud_provider.conflict.description"               = "Обнаружен конфликт синхронизации";
+"error.cloud_provider.conflict.recovery"                  = "Выберите, какую версию оставить";
+"error.cloud_provider.invalid_response.description"       = "Неверный ответ облачного сервиса";
+"error.cloud_provider.invalid_response.recovery"          = "Попробуйте позже";
+"error.cloud_provider.unsupported_provider.description"   = "Неподдерживаемый облачный провайдер";
+"error.cloud_provider.unsupported_provider.recovery"      = "Используйте поддерживаемый облачный сервис";
+
+// Errors — Auth
+"error.auth.invalid_credentials.description"   = "Неверные данные для входа";
+"error.auth.invalid_credentials.recovery"      = "Проверьте логин и пароль";
+"error.auth.credentials_missing.description"   = "Данные для входа отсутствуют";
+"error.auth.credentials_missing.recovery"      = "Войдите в аккаунт для продолжения";
+"error.auth.token_expired.description"         = "Токен сессии истёк";
+"error.auth.token_expired.recovery"            = "Войдите снова";
+"error.auth.token_missing.description"         = "Токен аутентификации отсутствует";
+"error.auth.token_missing.recovery"            = "Войдите в аккаунт для продолжения";
+"error.auth.session_expired.description"       = "Сессия истекла";
+"error.auth.session_expired.recovery"          = "Войдите снова";
+"error.auth.refresh_failed.description"        = "Ошибка обновления сессии";
+"error.auth.refresh_failed.recovery"           = "Войдите снова";
+"error.auth.access_denied.description"         = "Доступ запрещён";
+"error.auth.access_denied.recovery"            = "У вас нет прав для этого действия";
+"error.auth.biometry_unavailable.description"  = "Биометрическая аутентификация недоступна";
+"error.auth.biometry_unavailable.recovery"     = "Используйте пароль вместо биометрии";
+"error.auth.biometry_failed.description"       = "Ошибка биометрической аутентификации";
+"error.auth.biometry_failed.recovery"          = "Попробуйте ещё раз или используйте пароль";
+"error.auth.keychain_failed.description"       = "Ошибка доступа к Keychain";
+"error.auth.keychain_failed.recovery"          = "Перезапустите приложение и попробуйте снова";
+
+// Errors — Parsing
+"error.parsing.invalid_format.description"             = "Неверный формат файла";
+"error.parsing.invalid_format.recovery"                = "Файл может быть повреждён или не поддерживается";
+"error.parsing.unsupported_format.description"         = "Формат не поддерживается";
+"error.parsing.unsupported_format.recovery"            = "Используйте поддерживаемый формат файла";
+"error.parsing.corrupted_data.description"             = "Данные файла повреждены";
+"error.parsing.corrupted_data.recovery"                = "Попробуйте скачать файл заново";
+"error.parsing.missing_required_field.description"     = "Отсутствуют обязательные данные";
+"error.parsing.missing_required_field.recovery"        = "Файл может быть неполным";
+"error.parsing.decoding_failed.description"            = "Ошибка декодирования файла";
+"error.parsing.decoding_failed.recovery"               = "Файл может быть повреждён";
+"error.parsing.encoding_failed.description"            = "Ошибка кодирования данных";
+"error.parsing.encoding_failed.recovery"               = "Попробуйте ещё раз";
+"error.parsing.unsupported_encoding.description"       = "Неподдерживаемая кодировка текста";
+"error.parsing.unsupported_encoding.recovery"          = "Файл использует неподдерживаемую кодировку";
+"error.parsing.empty_content.description"              = "Файл пуст";
+"error.parsing.empty_content.recovery"                 = "Файл не содержит читаемого контента";
+"error.parsing.metadata_extraction_failed.description" = "Ошибка извлечения метаданных";
+"error.parsing.metadata_extraction_failed.recovery"    = "Метаданные могут отсутствовать или быть повреждены";
+
+// Errors — StoreKit
+"error.storekit.purchase_failed.description"     = "Ошибка покупки";
+"error.storekit.purchase_failed.recovery"        = "Попробуйте ещё раз или обратитесь в поддержку";
+"error.storekit.purchase_cancelled.description"  = "Покупка отменена";
+"error.storekit.purchase_cancelled.recovery"     = "Вы можете совершить покупку в любое время";
+"error.storekit.restore_failed.description"      = "Ошибка восстановления покупок";
+"error.storekit.restore_failed.recovery"         = "Проверьте Apple ID и повторите попытку";
+"error.storekit.product_not_found.description"   = "Продукт не найден";
+"error.storekit.product_not_found.recovery"      = "Попробуйте позже";
+"error.storekit.receipt_missing.description"     = "Чек покупки отсутствует";
+"error.storekit.receipt_missing.recovery"        = "Восстановите покупки для проверки";
+"error.storekit.receipt_invalid.description"     = "Чек покупки недействителен";
+"error.storekit.receipt_invalid.recovery"        = "Обратитесь в поддержку, если проблема повторяется";
+"error.storekit.verification_failed.description" = "Ошибка проверки покупки";
+"error.storekit.verification_failed.recovery"    = "Обратитесь в поддержку, если проблема повторяется";
+"error.storekit.not_entitled.description"        = "Функция недоступна";
+"error.storekit.not_entitled.recovery"           = "Перейдите на Premium для доступа к этой функции";
+"error.storekit.premium_required.description"    = "Требуется Premium";
+"error.storekit.premium_required.recovery"       = "Перейдите на Premium для использования этой функции";
+
+// Errors — Sync
+"error.sync.push_failed.description"              = "Ошибка отправки данных синхронизации";
+"error.sync.push_failed.recovery"                 = "Проверьте соединение и повторите попытку";
+"error.sync.pull_failed.description"              = "Ошибка получения данных синхронизации";
+"error.sync.pull_failed.recovery"                 = "Проверьте соединение и повторите попытку";
+"error.sync.conflict_detected.description"        = "Обнаружен конфликт синхронизации";
+"error.sync.conflict_detected.recovery"           = "Выберите, какую версию оставить";
+"error.sync.merge_failed.description"             = "Ошибка объединения данных синхронизации";
+"error.sync.merge_failed.recovery"                = "Попробуйте позже";
+"error.sync.cloud_unavailable.description"        = "Облачный сервис недоступен";
+"error.sync.cloud_unavailable.recovery"           = "Проверьте соединение и повторите попытку";
+"error.sync.version_mismatch.description"         = "Несовместимые версии синхронизации";
+"error.sync.version_mismatch.recovery"            = "Обновите приложение до последней версии";
+"error.sync.serialization_failed.description"     = "Ошибка сериализации данных синхронизации";
+"error.sync.serialization_failed.recovery"        = "Попробуйте позже";
+"error.sync.deserialization_failed.description"   = "Ошибка десериализации данных синхронизации";
+"error.sync.deserialization_failed.recovery"      = "Попробуйте позже";
+"error.sync.invalid_state.description"            = "Недопустимое состояние синхронизации";
+"error.sync.invalid_state.recovery"               = "Перезапустите приложение и попробуйте снова";
+
+// Errors — AI
+"error.ai.api_key_missing.description"        = "API-ключ AI отсутствует";
+"error.ai.api_key_missing.recovery"           = "Добавьте API-ключ в параметрах приложения";
+"error.ai.api_key_invalid.description"        = "API-ключ недействителен";
+"error.ai.api_key_invalid.recovery"           = "Проверьте и обновите API-ключ в параметрах";
+"error.ai.request_failed.description"         = "Ошибка при отправке запроса к AI";
+"error.ai.request_failed.recovery"            = "Проверьте соединение и повторите попытку";
+"error.ai.invalid_response.description"       = "Неверный ответ от AI";
+"error.ai.invalid_response.recovery"          = "Попробуйте позже";
+"error.ai.rate_limited.description"           = "Лимит запросов к AI превышен";
+"error.ai.rate_limited.recovery"              = "Подождите несколько минут и повторите";
+"error.ai.quota_exceeded.description"         = "Квота AI исчерпана";
+"error.ai.quota_exceeded.recovery"            = "Ваш лимит на использование AI достигнут";
+"error.ai.model_unavailable.description"      = "Модель AI недоступна";
+"error.ai.model_unavailable.recovery"         = "Попробуйте позже";
+"error.ai.content_blocked.description"        = "Контент заблокирован политиками AI";
+"error.ai.content_blocked.recovery"           = "Попробуйте с другим текстом";
+"error.ai.unsupported_language.description"   = "Язык не поддерживается";
+"error.ai.unsupported_language.recovery"      = "Выберите поддерживаемый язык";
+"error.ai.generation_failed.description"      = "Ошибка генерации AI";
+"error.ai.generation_failed.recovery"         = "Попробуйте ещё раз";

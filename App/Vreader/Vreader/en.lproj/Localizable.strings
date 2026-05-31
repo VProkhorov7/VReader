@@ -83,3 +83,191 @@
 
 // AppTheme
 "app_theme.premium_required" = "This theme is available in Premium only";
+
+// Errors — FileSystem
+"error.file_system.file_not_found.description"        = "File not found";
+"error.file_system.file_not_found.recovery"           = "Check that the file exists and try again";
+"error.file_system.file_access_denied.description"    = "Access denied";
+"error.file_system.file_access_denied.recovery"       = "Grant the app access to this file";
+"error.file_system.read_failed.description"           = "Failed to read file";
+"error.file_system.read_failed.recovery"              = "The file may be corrupted or unavailable";
+"error.file_system.write_failed.description"          = "Failed to write file";
+"error.file_system.write_failed.recovery"             = "Check available storage space";
+"error.file_system.delete_failed.description"         = "Failed to delete file";
+"error.file_system.delete_failed.recovery"            = "Try again or restart the app";
+"error.file_system.copy_failed.description"           = "Failed to copy file";
+"error.file_system.copy_failed.recovery"              = "Check available storage space";
+"error.file_system.move_failed.description"           = "Failed to move file";
+"error.file_system.move_failed.recovery"              = "Check available storage space";
+"error.file_system.create_directory_failed.description" = "Failed to create directory";
+"error.file_system.create_directory_failed.recovery"  = "Check permissions and available space";
+"error.file_system.invalid_path.description"          = "Invalid file path";
+"error.file_system.invalid_path.recovery"             = "Check the file path and try again";
+"error.file_system.disk_full.description"             = "Not enough storage space";
+"error.file_system.disk_full.recovery"                = "Free up space and try again";
+"error.file_system.permission_denied.description"     = "Permission denied";
+"error.file_system.permission_denied.recovery"        = "Grant the app the required permissions";
+"error.file_system.file_already_exists.description"   = "File already exists";
+"error.file_system.file_already_exists.recovery"      = "Rename the file or delete the existing one";
+"error.file_system.bookmark_stale.description"        = "File bookmark is outdated";
+"error.file_system.bookmark_stale.recovery"           = "Re-open the file to refresh access";
+
+// Errors — Network
+"error.network.offline.description"            = "No internet connection";
+"error.network.offline.recovery"               = "Check your connection and try again";
+"error.network.unavailable.description"        = "Network unavailable";
+"error.network.unavailable.recovery"           = "Check your connection and try again";
+"error.network.timeout.description"            = "Request timed out";
+"error.network.timeout.recovery"               = "Check your connection and try again";
+"error.network.request_failed.description"     = "Request failed";
+"error.network.request_failed.recovery"        = "Check your connection and try again";
+"error.network.invalid_response.description"   = "Invalid server response";
+"error.network.invalid_response.recovery"      = "Try again later";
+"error.network.invalid_status_code.description" = "Server returned an error";
+"error.network.invalid_status_code.recovery"   = "Try again later";
+"error.network.decoding_failed.description"    = "Failed to decode response";
+"error.network.decoding_failed.recovery"       = "Try again later";
+"error.network.encoding_failed.description"    = "Failed to encode request";
+"error.network.encoding_failed.recovery"       = "Try again later";
+"error.network.download_failed.description"    = "Download failed";
+"error.network.download_failed.recovery"       = "Check your connection and try again";
+"error.network.upload_failed.description"      = "Upload failed";
+"error.network.upload_failed.recovery"         = "Check your connection and try again";
+"error.network.server_error.description"       = "Server error";
+"error.network.server_error.recovery"          = "Try again later";
+"error.network.rate_limited.description"       = "Too many requests";
+"error.network.rate_limited.recovery"          = "Wait a moment and try again";
+"error.network.cancelled.description"          = "Request cancelled";
+"error.network.cancelled.recovery"             = "Try again";
+
+// Errors — CloudProvider
+"error.cloud_provider.authentication_failed.description"  = "Cloud authentication failed";
+"error.cloud_provider.authentication_failed.recovery"     = "Sign in to your cloud account again";
+"error.cloud_provider.authorization_failed.description"   = "Cloud authorization failed";
+"error.cloud_provider.authorization_failed.recovery"      = "Grant the app access to cloud storage";
+"error.cloud_provider.credentials_missing.description"    = "Cloud credentials missing";
+"error.cloud_provider.credentials_missing.recovery"       = "Sign in to your cloud account";
+"error.cloud_provider.account_not_found.description"      = "Cloud account not found";
+"error.cloud_provider.account_not_found.recovery"         = "Check your account settings";
+"error.cloud_provider.provider_unavailable.description"   = "Cloud service unavailable";
+"error.cloud_provider.provider_unavailable.recovery"      = "Try again later";
+"error.cloud_provider.resource_not_found.description"     = "File not found in cloud";
+"error.cloud_provider.resource_not_found.recovery"        = "The file may have been moved or deleted";
+"error.cloud_provider.upload_failed.description"          = "Upload to cloud failed";
+"error.cloud_provider.upload_failed.recovery"             = "Check your connection and try again";
+"error.cloud_provider.download_failed.description"        = "Download from cloud failed";
+"error.cloud_provider.download_failed.recovery"           = "Check your connection and try again";
+"error.cloud_provider.sync_failed.description"            = "Cloud sync failed";
+"error.cloud_provider.sync_failed.recovery"               = "Check your connection and try again";
+"error.cloud_provider.quota_exceeded.description"         = "Cloud storage quota exceeded";
+"error.cloud_provider.quota_exceeded.recovery"            = "Free up space in your cloud storage";
+"error.cloud_provider.conflict.description"               = "Sync conflict detected";
+"error.cloud_provider.conflict.recovery"                  = "Choose which version to keep";
+"error.cloud_provider.invalid_response.description"       = "Invalid cloud response";
+"error.cloud_provider.invalid_response.recovery"          = "Try again later";
+"error.cloud_provider.unsupported_provider.description"   = "Unsupported cloud provider";
+"error.cloud_provider.unsupported_provider.recovery"      = "Use a supported cloud service";
+
+// Errors — Auth
+"error.auth.invalid_credentials.description"   = "Invalid credentials";
+"error.auth.invalid_credentials.recovery"      = "Check your username and password";
+"error.auth.credentials_missing.description"   = "Credentials missing";
+"error.auth.credentials_missing.recovery"      = "Sign in to continue";
+"error.auth.token_expired.description"         = "Session token expired";
+"error.auth.token_expired.recovery"            = "Sign in again";
+"error.auth.token_missing.description"         = "Authentication token missing";
+"error.auth.token_missing.recovery"            = "Sign in to continue";
+"error.auth.session_expired.description"       = "Session expired";
+"error.auth.session_expired.recovery"          = "Sign in again";
+"error.auth.refresh_failed.description"        = "Failed to refresh session";
+"error.auth.refresh_failed.recovery"           = "Sign in again";
+"error.auth.access_denied.description"         = "Access denied";
+"error.auth.access_denied.recovery"            = "You do not have permission for this action";
+"error.auth.biometry_unavailable.description"  = "Biometric authentication unavailable";
+"error.auth.biometry_unavailable.recovery"     = "Use your password instead";
+"error.auth.biometry_failed.description"       = "Biometric authentication failed";
+"error.auth.biometry_failed.recovery"          = "Try again or use your password";
+"error.auth.keychain_failed.description"       = "Keychain access failed";
+"error.auth.keychain_failed.recovery"          = "Restart the app and try again";
+
+// Errors — Parsing
+"error.parsing.invalid_format.description"             = "Invalid file format";
+"error.parsing.invalid_format.recovery"                = "The file may be corrupted or unsupported";
+"error.parsing.unsupported_format.description"         = "Unsupported format";
+"error.parsing.unsupported_format.recovery"            = "Use a supported file format";
+"error.parsing.corrupted_data.description"             = "File data is corrupted";
+"error.parsing.corrupted_data.recovery"                = "Try re-downloading the file";
+"error.parsing.missing_required_field.description"     = "Required data missing";
+"error.parsing.missing_required_field.recovery"        = "The file may be incomplete";
+"error.parsing.decoding_failed.description"            = "Failed to decode file";
+"error.parsing.decoding_failed.recovery"               = "The file may be corrupted";
+"error.parsing.encoding_failed.description"            = "Failed to encode data";
+"error.parsing.encoding_failed.recovery"               = "Try again";
+"error.parsing.unsupported_encoding.description"       = "Unsupported text encoding";
+"error.parsing.unsupported_encoding.recovery"          = "The file uses an unsupported encoding";
+"error.parsing.empty_content.description"              = "File is empty";
+"error.parsing.empty_content.recovery"                 = "The file contains no readable content";
+"error.parsing.metadata_extraction_failed.description" = "Failed to extract metadata";
+"error.parsing.metadata_extraction_failed.recovery"    = "Metadata may be missing or corrupted";
+
+// Errors — StoreKit
+"error.storekit.purchase_failed.description"     = "Purchase failed";
+"error.storekit.purchase_failed.recovery"        = "Try again or contact support";
+"error.storekit.purchase_cancelled.description"  = "Purchase cancelled";
+"error.storekit.purchase_cancelled.recovery"     = "You can purchase again at any time";
+"error.storekit.restore_failed.description"      = "Failed to restore purchases";
+"error.storekit.restore_failed.recovery"         = "Check your Apple ID and try again";
+"error.storekit.product_not_found.description"   = "Product not found";
+"error.storekit.product_not_found.recovery"      = "Try again later";
+"error.storekit.receipt_missing.description"     = "Purchase receipt missing";
+"error.storekit.receipt_missing.recovery"        = "Restore purchases to verify";
+"error.storekit.receipt_invalid.description"     = "Purchase receipt invalid";
+"error.storekit.receipt_invalid.recovery"        = "Contact support if the issue persists";
+"error.storekit.verification_failed.description" = "Purchase verification failed";
+"error.storekit.verification_failed.recovery"    = "Contact support if the issue persists";
+"error.storekit.not_entitled.description"        = "Feature not available";
+"error.storekit.not_entitled.recovery"           = "Upgrade to Premium to unlock this feature";
+"error.storekit.premium_required.description"    = "Premium required";
+"error.storekit.premium_required.recovery"       = "Upgrade to Premium to use this feature";
+
+// Errors — Sync
+"error.sync.push_failed.description"              = "Sync upload failed";
+"error.sync.push_failed.recovery"                 = "Check your connection and try again";
+"error.sync.pull_failed.description"              = "Sync download failed";
+"error.sync.pull_failed.recovery"                 = "Check your connection and try again";
+"error.sync.conflict_detected.description"        = "Sync conflict detected";
+"error.sync.conflict_detected.recovery"           = "Choose which version to keep";
+"error.sync.merge_failed.description"             = "Failed to merge sync data";
+"error.sync.merge_failed.recovery"                = "Try again later";
+"error.sync.cloud_unavailable.description"        = "Cloud service unavailable";
+"error.sync.cloud_unavailable.recovery"           = "Check your connection and try again";
+"error.sync.version_mismatch.description"         = "Sync version mismatch";
+"error.sync.version_mismatch.recovery"            = "Update the app to the latest version";
+"error.sync.serialization_failed.description"     = "Failed to serialize sync data";
+"error.sync.serialization_failed.recovery"        = "Try again later";
+"error.sync.deserialization_failed.description"   = "Failed to deserialize sync data";
+"error.sync.deserialization_failed.recovery"      = "Try again later";
+"error.sync.invalid_state.description"            = "Invalid sync state";
+"error.sync.invalid_state.recovery"               = "Restart the app and try again";
+
+// Errors — AI
+"error.ai.api_key_missing.description"        = "AI API key missing";
+"error.ai.api_key_missing.recovery"           = "Add your API key in app settings";
+"error.ai.api_key_invalid.description"        = "AI API key is invalid";
+"error.ai.api_key_invalid.recovery"           = "Check and update your API key in settings";
+"error.ai.request_failed.description"         = "AI request failed";
+"error.ai.request_failed.recovery"            = "Check your connection and try again";
+"error.ai.invalid_response.description"       = "Invalid AI response";
+"error.ai.invalid_response.recovery"          = "Try again later";
+"error.ai.rate_limited.description"           = "AI request limit exceeded";
+"error.ai.rate_limited.recovery"              = "Wait a few minutes and try again";
+"error.ai.quota_exceeded.description"         = "AI quota exceeded";
+"error.ai.quota_exceeded.recovery"            = "Your AI usage limit has been reached";
+"error.ai.model_unavailable.description"      = "AI model unavailable";
+"error.ai.model_unavailable.recovery"         = "Try again later";
+"error.ai.content_blocked.description"        = "Content blocked by AI policy";
+"error.ai.content_blocked.recovery"           = "Try with different text";
+"error.ai.unsupported_language.description"   = "Language not supported";
+"error.ai.unsupported_language.recovery"      = "Select a supported language";
+"error.ai.generation_failed.description"      = "AI generation failed";
+"error.ai.generation_failed.recovery"         = "Try again";

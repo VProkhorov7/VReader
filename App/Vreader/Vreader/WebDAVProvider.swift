@@ -42,9 +42,9 @@ final class WebDAVProvider: CloudProviderProtocol {
         let (data, response) = try await URLSession.shared.data(for: request)
         guard (response as? HTTPURLResponse)?.statusCode == 207 else {
             throw AppError(
-                code: .fileSystem(.fileNotFound),
-                description: "WebDAV path not found.",
-                recoveryHint: "Check the server path and try again."
+                code: .cloudProvider(.resourceNotFound),
+                description: L10n.Errors.CloudProvider.resourceNotFoundDescription,
+                recoveryHint: L10n.Errors.CloudProvider.resourceNotFoundRecovery
             )
         }
         return parseWebDAVResponse(data)
@@ -57,8 +57,8 @@ final class WebDAVProvider: CloudProviderProtocol {
         guard isAuthenticated else {
             throw AppError(
                 code: .auth(.credentialsMissing),
-                description: "WebDAV authentication required.",
-                recoveryHint: "Reconnect the WebDAV source in Settings."
+                description: L10n.Errors.Auth.credentialsMissingDescription,
+                recoveryHint: L10n.Errors.Auth.credentialsMissingRecovery
             )
         }
 
@@ -82,9 +82,9 @@ final class WebDAVProvider: CloudProviderProtocol {
         guard let http = response as? HTTPURLResponse,
               (200...299).contains(http.statusCode) else {
             throw AppError(
-                code: .cloudProvider(.providerUnavailable),
-                description: "WebDAV download failed with unexpected HTTP status.",
-                recoveryHint: "Check the server status and try again."
+                code: .network(.invalidStatusCode),
+                description: L10n.Errors.Network.invalidStatusCodeDescription,
+                recoveryHint: L10n.Errors.Network.invalidStatusCodeRecovery
             )
         }
 

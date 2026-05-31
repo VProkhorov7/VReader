@@ -1,0 +1,74 @@
+{
+  "checklist": [
+    {
+      "id": "test_files_exist",
+      "label": "Test files present",
+      "passed": false,
+      "detail": "No test files found"
+    },
+    {
+      "id": "spec_exists",
+      "label": "Specification filled",
+      "passed": true,
+      "detail": "5951 chars"
+    },
+    {
+      "id": "stages_complete",
+      "label": "All stages implemented",
+      "passed": true,
+      "detail": "2/2 stages"
+    }
+  ],
+  "task_commands": [
+    {
+      "name": "Поиск оставшихся вызовов старого API",
+      "command": "grep -rn \"\\.save(key:\" App/Vreader/Vreader/ --include=\"*.swift\" | grep -v KeychainManager.swift || echo \"OK\"",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "App/Vreader/Vreader/iCloudSettingsStore.swift:188:        try await KeychainManager.shared.save(key: account.keychainKey, value: password)\nApp/Vreader/Vreader/iCloudSettingsStore.swift:217:            try await KeychainManager.shared.save(key: entry.keychainKey, value: password)\n",
+      "stderr": ""
+    },
+    {
+      "name": "Поиск вызовов .load( с возможной неоднозначностью",
+      "command": "grep -rn \"km\\.load\\|shared\\.load\" App/Vreader/Vreader/ --include=\"*.swift\" | grep -v KeychainManager.swift || echo \"OK\"",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "App/Vreader/Vreader/iCloudSettingsStore.swift:198:        try? await KeychainManager.shared.load(key: account.keychainKey)\nApp/Vreader/Vreader/iCloudSettingsStore.swift:228:        try? await KeychainManager.shared.load(key: entry.keychainKey)\n",
+      "stderr": ""
+    },
+    {
+      "name": "check_refs.py валидация",
+      "command": "python3 check_refs.py 2>&1 | tail -30",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "✅ Все API совместимы с iOS 17+\n✅ Проект чист — можно публиковать\n",
+      "stderr": ""
+    },
+    {
+      "name": "Сборка проекта (iOS Simulator)",
+      "command": "cd App/Vreader && xcodebuild -scheme Vreader -destination 'platform=iOS Simulator,OS=latest,name=iPhone 16' build -quiet 2>&1 | tail -10",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "\t\t{ platform:iOS Simulator, arch:arm64, id:1941A8E9-7384-46EA-871B-5DB16C460238, OS:26.5, name:iPhone 17 Pro }\n\t\t{ platform:iOS Simulator, arch:arm64, id:2F417E8A-24F1-4012-BE04-1DD8F254C381, OS:26.3.1, name:iPhone 17 Pro Max }\n\t\t{ platform:iOS Simulator, arch:arm64, id:4A100E7C-FDE6-4B15-936B-88D03544065B, OS:26.5, name:iPhone 17 Pro Max }\n\t\t{ platform:iOS Simulator, arch:arm64, id:E31F385E-AA02-4B56-AFC0-DC0F59ADC5E6, OS:26.3.1, name:iPhone 17e }\n\t\t{ platform:iOS Simulator, arch:arm64, id:3348220B-2806-4C56-918D-84C87B1120D3, OS:26.5, name:iPhone 17e }\n\t\t{ platform:iOS Simulator, arch:arm64, id:8C00F918-F1EE-41CF-A36E-006BCE203BA5, OS:26.3.1, name:iPhone Air }\n\t\t{ platform:iOS Simulator, arch:arm64, id:2B5EC0CD-8227-4710-8D3D-BE7B98D989CF, OS:26.5, name:iPhone Air }\n\n\tIneligible destinations for the \"Vreader\" scheme:\n\t\t{ platform:visionOS, id:dvtdevice-DVTiOSDevicePlaceholder-xros:placeholder, name:Any visionOS Device, error:visionOS 26.5 is not installed. Please download and install the platform from Xcode > Settings > Components. }\n",
+      "stderr": ""
+    },
+    {
+      "name": "Юнит-тесты KeychainManagerTests",
+      "command": "cd App/Vreader && xcodebuild test -scheme Vreader -destination 'platform=iOS Simulator,OS=latest,name=iPhone 16' -only-testing:VreaderTests/KeychainManagerTests 2>&1 | grep -E \"Test Suite|passed|failed|error:\"",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "xcodebuild: error: Unable to find a device matching the provided destination specifier:\n\t\t{ platform:visionOS, id:dvtdevice-DVTiOSDevicePlaceholder-xros:placeholder, name:Any visionOS Device, error:visionOS 26.5 is not installed. Please download and install the platform from Xcode > Settings > Components. }\n",
+      "stderr": ""
+    },
+    {
+      "name": "Все юнит-тесты VreaderTests",
+      "command": "cd App/Vreader && xcodebuild test -scheme Vreader -destination 'platform=iOS Simulator,OS=latest,name=iPhone 16' -only-testing:VreaderTests 2>&1 | grep -E \"Test Suite|passed|failed|error:\"",
+      "success": true,
+      "exit_code": 0,
+      "stdout": "xcodebuild: error: Unable to find a device matching the provided destination specifier:\n\t\t{ platform:visionOS, id:dvtdevice-DVTiOSDevicePlaceholder-xros:placeholder, name:Any visionOS Device, error:visionOS 26.5 is not installed. Please download and install the platform from Xcode > Settings > Components. }\n",
+      "stderr": ""
+    }
+  ],
+  "passed": false,
+  "timestamp": "2026-05-28T08:07:24.513249"
+}

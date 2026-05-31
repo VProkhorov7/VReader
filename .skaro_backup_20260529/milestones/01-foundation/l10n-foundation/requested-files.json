@@ -1,0 +1,22 @@
+[
+  "App/Vreader/Vreader/L10n.swift",
+  "App/Vreader/Vreader/ru.lproj/Localizable.strings",
+  "App/Vreader/Vreader/en.lproj/Localizable.strings",
+  "App/Vreader/Vreader/LibraryView.swift",
+  "App/Vreader/Vreader/ReaderView.swift",
+  "App/Vreader/Vreader/SettingsView.swift",
+  "App/Vreader/Vreader/AppError.swift",
+  "App/Vreader/Vreader/ErrorCode.swift",
+  "App/Vreader/Vreader/CloudStorageView.swift",
+  "App/Vreader/Vreader/ContentView.swift",
+  "App/Vreader/Vreader/MainTabView.swift",
+  "App/Vreader/Vreader/BookDetailView.swift",
+  "App/Vreader/Vreader/DebugView.swift",
+  "App/Vreader/Vreader/OnlineView.swift",
+  "App/Vreader/Vreader/CatalogsView.swift",
+  "check_refs.py",
+  "Description/check_refs.py",
+  "App/Vreader/Vreader/ThemeID.swift",
+  "App/Vreader/Vreader/ThemeStore.swift",
+  "App/Vreader/Vreader/CatalogModels.swift"
+]

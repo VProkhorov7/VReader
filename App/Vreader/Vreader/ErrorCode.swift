@@ -1,62 +1,135 @@
 import Foundation
 
+// MARK: - FileSystemError
+
 enum FileSystemError: String, Equatable, Hashable, Codable, Sendable, CaseIterable {
     case fileNotFound
     case permissionDenied
     case bookmarkStale
     case diskFull
+    case readFailed
+    case writeFailed
+    case deleteFailed
+    case moveFailed
+    case copyFailed
+    case createDirectoryFailed
+    case invalidPath
+    case fileAlreadyExists
+    case fileAccessDenied
 }
+
+// MARK: - NetworkError
 
 enum NetworkError: String, Equatable, Hashable, Codable, Sendable, CaseIterable {
     case unavailable
+    case offline
     case timeout
+    case cancelled
     case invalidResponse
-    case sslError
+    case invalidStatusCode
+    case requestFailed
+    case downloadFailed
+    case uploadFailed
+    case decodingFailed
+    case encodingFailed
+    case rateLimited
+    case serverError
 }
 
+// MARK: - CloudProviderError
+
 enum CloudProviderError: String, Equatable, Hashable, Codable, Sendable, CaseIterable {
-    case authFailed
-    case quotaExceeded
-    case fileConflict
     case providerUnavailable
+    case credentialsMissing
+    case authenticationFailed
+    case authorizationFailed
+    case accountNotFound
+    case resourceNotFound
+    case quotaExceeded
+    case conflict
+    case invalidResponse
+    case unsupportedProvider
+    case syncFailed
+    case downloadFailed
+    case uploadFailed
 }
+
+// MARK: - AIServiceError
 
 enum AIServiceError: String, Equatable, Hashable, Codable, Sendable, CaseIterable {
     case apiKeyMissing
-    case rateLimitExceeded
+    case apiKeyInvalid
+    case requestFailed
     case invalidResponse
+    case rateLimited
+    case quotaExceeded
     case modelUnavailable
+    case contentBlocked
+    case unsupportedLanguage
+    case generationFailed
+    case timeout
 }
+
+// MARK: - StoreKitError
 
 enum StoreKitError: String, Equatable, Hashable, Codable, Sendable, CaseIterable {
-    case purchaseFailed
-    case premiumRequired
-    case receiptInvalid
     case productNotFound
+    case purchaseFailed
+    case purchaseCancelled
+    case verificationFailed
+    case premiumRequired
+    case restoreFailed
+    case receiptMissing
+    case receiptInvalid
+    case notEntitled
 }
 
+// MARK: - SyncError
+
 enum SyncError: String, Equatable, Hashable, Codable, Sendable, CaseIterable {
-    case conflictUnresolved
-    case lamportClockMismatch
-    case queueFull
-    case staleData
+    case conflictDetected
+    case mergeFailed
+    case cloudUnavailable
+    case pushFailed
+    case pullFailed
+    case invalidState
+    case versionMismatch
+    case serializationFailed
+    case deserializationFailed
 }
+
+// MARK: - ParsingError
 
 enum ParsingError: String, Equatable, Hashable, Codable, Sendable, CaseIterable {
     case unsupportedFormat
+    case invalidFormat
     case corruptedData
+    case missingRequiredField
+    case decodingFailed
     case encodingFailed
-    case pageExtractionFailed
+    case emptyContent
+    case unsupportedEncoding
+    case metadataExtractionFailed
 }
+
+// MARK: - AuthError
 
 enum AuthError: String, Equatable, Hashable, Codable, Sendable, CaseIterable {
-    case tokenExpired
-    case oauthFailed
-    case keychainUnavailable
     case credentialsMissing
+    case invalidCredentials
+    case tokenExpired
+    case tokenMissing
+    case refreshFailed
+    case accessDenied
+    case sessionExpired
+    case biometryUnavailable
+    case biometryFailed
+    case keychainFailed
 }
 
-enum ErrorCode: Error, Equatable, Hashable, Codable, Sendable {
+// MARK: - ErrorCode
+
+enum ErrorCode: Error, Equatable, Hashable, Sendable, Codable {
     case fileSystem(FileSystemError)
     case network(NetworkError)
     case cloudProvider(CloudProviderError)
@@ -65,6 +138,8 @@ enum ErrorCode: Error, Equatable, Hashable, Codable, Sendable {
     case sync(SyncError)
     case parsing(ParsingError)
     case auth(AuthError)
+
+    // MARK: Coding
 
     private enum CodingKeys: String, CodingKey {
         case category
@@ -134,6 +209,8 @@ enum ErrorCode: Error, Equatable, Hashable, Codable, Sendable {
             self = .auth(try container.decode(AuthError.self, forKey: .value))
         }
     }
+
+    // MARK: Analytics Code
 
     var categoryName: String {
         switch self {
